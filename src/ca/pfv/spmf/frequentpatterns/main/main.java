@@ -18,18 +18,18 @@ public class main {
 		Map<String, RuleAgrawal> mHash = new HashMap<String, RuleAgrawal>();
                 int N = 1;
                 int Lmin = 1;
-                int Lmax = 2;
+                int Lmax = 3;
 		try {
 			
                         for(int i=0; i< N; i++){
-                            System.out.println("Vou ler aquivo: " + ("resource/retail3.dat"));
+                            System.out.println("Vou ler aquivo: " + ("resource/retail2.dat"));
                             
                             ContextApriori context = new ContextApriori();
-                            context.loadFile("resource/retail3.dat");
+                            context.loadFile("resource/retail2.dat");
                             
                             System.out.println("li aquivo");
                             AlgoApriori algo = new AlgoApriori(context);
-                            Itemsets itemSets =  algo.runAlgorithm(0.005);
+                            Itemsets itemSets =  algo.runAlgorithm(0.01);
                             //algo.printStats(context.getMapeamentoIntString());
 
                             AlgoAgrawalFaster94 algoRules = new AlgoAgrawalFaster94(0.1, N);

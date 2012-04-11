@@ -58,7 +58,7 @@ public class AlgoSequencial {
         List<Cycle> listRet = new ArrayList<Cycle>();
         
         boolean[] bs = ra.getBinarySequence();
-        for(int index = 0; index <= bs.length; index++){
+        for(int index = 0; index < bs.length; index++){
             
             if(bs[index] == false) {
                 
