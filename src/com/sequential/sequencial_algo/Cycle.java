@@ -44,7 +44,8 @@ public class Cycle {
 
     @Override
     public String toString() {
-        return "Cycle{" + "lentgh=" + lentgh + ", offset=" + offset + '}';
+        //return "Cycle{" + "lentgh=" + lentgh + ", offset=" + offset + '}';
+        return "(" + lentgh + "," + offset + ')';
     }
    
     

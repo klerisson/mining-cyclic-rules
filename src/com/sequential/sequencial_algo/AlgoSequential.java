@@ -159,7 +159,7 @@ public class AlgoSequential {
         return cycles;
     }
 
-    public List<Cycle> pruneRule(RuleAgrawal ra) {
+    private List<Cycle> pruneRule(RuleAgrawal ra) {
 
         if (ra == null) {
             throw new IllegalArgumentException("Invalid rule");
@@ -188,7 +188,7 @@ public class AlgoSequential {
         return listRet;
     }
 
-    public List<Cycle> findCycles(RuleAgrawal ra) {
+    private List<Cycle> findRuleCycles(RuleAgrawal ra) {
 
         List<Cycle> cycles = pruneRule(ra);
         eliminateUselessCycles(cycles);
@@ -223,9 +223,30 @@ public class AlgoSequential {
         while (it.hasNext()) {
             String key = it.next();
             RuleAgrawal rule = mHash.get(key);
-            if(rule.getPrunedCycles() != null && rule.getPrunedCycles().size() > 0){
+            if (rule.getPrunedCycles() != null && rule.getPrunedCycles().size() > 0) {
                 System.out.print(rule.toString() + " ");
-                System.out.println(rule.getPrunedCycles()); 
+                System.out.println(rule.getPrunedCycles());
+            }
+        }
+    }
+
+    public void findCycles() {
+        for (RuleAgrawal ra : mHash.values()) {
+            boolean binarySequence[] = ra.getBinarySequence();
+            String binarySequenceStr = "";
+            for (int i = 0; i < numPartitions; i++) {
+                if (binarySequence[i]) {
+                    binarySequenceStr += "1";
+                } else {
+                    binarySequenceStr += "0";
+                }
+            }
+            if (mBinarySequenceMap.containsKey(binarySequenceStr)) {
+                ra.setPrunedCycles(mBinarySequenceMap.get(binarySequenceStr));
+            } else {
+                List<Cycle> listCycles = findRuleCycles(ra);
+                ra.setPrunedCycles(listCycles);
+                mBinarySequenceMap.put(binarySequenceStr, listCycles);
             }
         }
     }

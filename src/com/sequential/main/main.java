@@ -5,12 +5,12 @@ import com.sequential.sequencial_algo.AlgoSequential;
 import com.sequential.sequencial_algo.Cycle;
 import com.sequential.sequencial_algo.PartitionThread;
 import java.io.*;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class main {
 
@@ -31,18 +31,13 @@ public class main {
             if (opt.equals("S")) {
 
                 int nroLinhasPorParticao = numeroLinhas / N;
-                System.out.println("Numero Linhas: " + nroLinhasPorParticao);
+                //System.out.println("Numero Linhas: " + nroLinhasPorParticao);
 
-                String local = System.getProperty("user.dir");
-                System.out.println(local);
-
-
-                File dir = new File(local + "\\" + N);
+                File dir = new File(System.getProperty("user.dir") + "\\" + N);
                 boolean result = dir.mkdirs();
 
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\mestrado\\Data Mining\\Algoritmos Mineração\\retail.dat")));
-                String line = null;
-
+                String line;
 
                 for (int i = 0; i < N; i++) {
                     FileOutputStream saida;
@@ -102,27 +97,7 @@ public class main {
         }
         
          algoSeq.generateCycles();
-            //algoSeq.findCycles();
-            Map<String, List<Cycle>> binarySequenceMap = algoSeq.getmBinarySequenceMap();
-            for (RuleAgrawal ra : algoSeq.getmHash().values()) {
-                boolean binarySequence[] = ra.getBinarySequence();
-                String binarySequenceStr = "";
-                for (int i = 0; i < binarySequence.length; i++) {
-                    if (binarySequence[i]) {
-                        binarySequenceStr += "1";
-                    } else {
-                        binarySequenceStr += "0";
-                    }
-                }
-                if (binarySequenceMap.containsKey(binarySequenceStr)) {
-                    ra.setPrunedCycles(binarySequenceMap.get(binarySequenceStr));
-                } else {
-                    List<Cycle> listCycles = algoSeq.findCycles(ra);
-                    ra.setPrunedCycles(listCycles);
-                    binarySequenceMap.put(binarySequenceStr, listCycles);
-                }
-            }
-            
-            algoSeq.printCyclicRules();
+         algoSeq.findCycles();
+         algoSeq.printCyclicRules();
     }
 }
