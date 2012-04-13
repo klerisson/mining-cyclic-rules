@@ -1,9 +1,9 @@
 package com.sequential.main;
 
 import com.sequential.associationrules.agrawal_Apriori_version.RuleAgrawal;
-import com.sequential.sequencial_algo.AlgoSequential;
-import com.sequential.sequencial_algo.Cycle;
-import com.sequential.sequencial_algo.PartitionThread;
+import com.sequential.sequencialalgo.AlgoSequential;
+import com.sequential.sequencialalgo.Cycle;
+import com.sequential.sequencialalgo.PartitionThread;
 import java.io.*;
 import java.util.List;
 import java.util.Map;

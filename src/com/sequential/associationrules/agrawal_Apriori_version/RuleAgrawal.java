@@ -1,7 +1,7 @@
 package com.sequential.associationrules.agrawal_Apriori_version;
 
 import com.sequential.frequentpatterns.apriori.ItemsetApriori;
-import com.sequential.sequencial_algo.Cycle;
+import com.sequential.sequencialalgo.Cycle;
 import java.util.List;
 
 /**

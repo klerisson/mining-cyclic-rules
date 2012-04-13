@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sequential.sequencial_algo;
+package com.sequential.sequencialalgo;
 
 import com.sequential.associationrules.agrawal_Apriori_version.AlgoAgrawalFaster94;
 import com.sequential.associationrules.agrawal_Apriori_version.RuleAgrawal;
