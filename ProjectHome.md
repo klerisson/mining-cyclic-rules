@@ -1,0 +1,1 @@
+Data mining course assignment task
